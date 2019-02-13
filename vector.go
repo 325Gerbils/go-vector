@@ -9,7 +9,7 @@ import (
 
 // Vector x y z
 type Vector struct {
-	x, y, z float64
+	X, Y, Z float64
 }
 
 // CONSTRUCTORS
@@ -51,61 +51,61 @@ func FromAngle(angle interface{}) Vector {
 
 // Add v1 to v
 func (v *Vector) Add(v1 Vector) {
-	v.x += v1.x
-	v.y += v1.y
-	v.z += v1.z
+	v.X += v1.X
+	v.Y += v1.Y
+	v.Z += v1.Z
 }
 
 // Sub v1 from v
 func (v *Vector) Sub(v1 Vector) {
-	v.x -= v1.x
-	v.y -= v1.y
-	v.z -= v1.z
+	v.X -= v1.X
+	v.Y -= v1.Y
+	v.Z -= v1.Z
 }
 
 // Mult v by s
 func (v *Vector) Mult(s interface{}) {
 	m := getFloat64(s)
-	v.x *= m
-	v.y *= m
-	v.z *= m
+	v.X *= m
+	v.Y *= m
+	v.Z *= m
 }
 
 // Div v by s
 func (v *Vector) Div(s interface{}) {
 	m := getFloat64(s)
-	v.x /= m
-	v.y /= m
-	v.z /= m
+	v.X /= m
+	v.Y /= m
+	v.Z /= m
 }
 
 // Add v1 and v2
 func Add(v1 Vector, v2 Vector) Vector {
 	r := v1.Copy()
 	r.Add(v2)
-	return Vector{r.x, r.y, r.z}
+	return Vector{r.X, r.Y, r.Z}
 }
 
 // Sub v2 from v1
 func Sub(v1 Vector, v2 Vector) Vector {
 	r := v1.Copy()
 	r.Sub(v2)
-	return Vector{r.x, r.y, r.z}
+	return Vector{r.X, r.Y, r.Z}
 }
 
 // Mag float64
 func (v Vector) Mag() float64 {
-	return math.Sqrt(v.x*v.x + v.y*v.y + v.z*v.z)
+	return math.Sqrt(v.X*v.X + v.Y*v.Y + v.Z*v.Z)
 }
 
 // MagSq float64
 func (v Vector) MagSq() float64 {
-	return v.x*v.x + v.y*v.y + v.z*v.z
+	return v.X*v.X + v.Y*v.Y + v.Z*v.Z
 }
 
 // Copy Vector
 func (v Vector) Copy() Vector {
-	return Vector{v.x, v.y, v.z}
+	return Vector{v.X, v.Y, v.Z}
 }
 
 // Get Vector
@@ -120,30 +120,30 @@ func (v *Vector) Normalize() {
 
 // Dist float64
 func (v Vector) Dist(v1 Vector) float64 {
-	dx := v.x - v1.x
-	dy := v.y - v1.y
-	dz := v.z - v1.z
+	dx := v.X - v1.X
+	dy := v.Y - v1.Y
+	dz := v.Z - v1.Z
 	return math.Sqrt(dx*dx + dy*dy + dz*dz)
 }
 
 // DistSq float64
 func (v Vector) DistSq(v1 Vector) float64 {
-	dx := v.x - v1.x
-	dy := v.y - v1.y
-	dz := v.z - v1.z
+	dx := v.X - v1.X
+	dy := v.Y - v1.Y
+	dz := v.Z - v1.Z
 	return dx*dx + dy*dy + dz*dz
 }
 
 // Dot float64
 func (v Vector) Dot(v1 Vector) float64 {
-	return v.x*v1.x + v.y*v1.y + v.z*v1.z
+	return v.X*v1.X + v.Y*v1.Y + v.Z*v1.Z
 }
 
 // Cross Vector
 func (v Vector) Cross(v1 Vector) Vector {
-	cx := v.y*v1.z - v1.y*v.z
-	cy := v.z*v1.x - v1.z*v.x
-	cz := v.x*v1.y - v1.x*v.y
+	cx := v.Y*v1.Z - v1.Y*v.Z
+	cy := v.Z*v1.X - v1.Z*v.X
+	cz := v.X*v1.Y - v1.X*v.Y
 	return Vector{cx, cy, cz}
 }
 
@@ -165,37 +165,37 @@ func (v *Vector) SetMag(mag interface{}) {
 
 // Heading float64
 func (v Vector) Heading() float64 {
-	return math.Atan2(v.y, v.x)
+	return math.Atan2(v.Y, v.X)
 }
 
 // Rotate v
 func (v *Vector) Rotate(amt interface{}) {
-	t := v.x
+	t := v.X
 	a := getFloat64(amt)
-	v.x = v.x*math.Cos(a) - v.y*math.Sin(a)
-	v.y = t*math.Sin(a) - v.x*math.Cos(a)
+	v.X = v.X*math.Cos(a) - v.Y*math.Sin(a)
+	v.Y = t*math.Sin(a) - v.X*math.Cos(a)
 }
 
 // Lerp Vector
 func Lerp(v, v1 Vector, amt interface{}) Vector {
 	a := getFloat64(amt)
-	x := lerp(v.x, v1.x, a)
-	y := lerp(v.y, v1.y, a)
-	z := lerp(v.z, v1.z, a)
+	x := lerp(v.X, v1.X, a)
+	y := lerp(v.Y, v1.Y, a)
+	z := lerp(v.Z, v1.Z, a)
 	return Vector{x, y, z}
 }
 
 // AngleBetween float64
 func AngleBetween(v, v1 Vector) float64 {
-	if v.x == 0 && v.y == 0 && v.z == 0 {
+	if v.X == 0 && v.Y == 0 && v.Z == 0 {
 		return 0
 	}
-	if v1.x == 0 && v1.y == 0 && v1.z == 0 {
+	if v1.X == 0 && v1.Y == 0 && v1.Z == 0 {
 		return 0
 	}
-	dot := v.x*v1.x + v.y*v1.y + v.z*v1.z
-	vmag := math.Sqrt(v.x*v.x + v.y*v.y + v.z*v.z)
-	v1mag := math.Sqrt(v1.x*v1.x + v1.y*v1.y + v1.z*v1.z)
+	dot := v.X*v1.X + v.Y*v1.Y + v.Z*v1.Z
+	vmag := math.Sqrt(v.X*v.X + v.Y*v.Y + v.Z*v.Z)
+	v1mag := math.Sqrt(v1.X*v1.X + v1.Y*v1.Y + v1.Z*v1.Z)
 	amt := dot / (vmag * v1mag)
 	if amt <= -1 {
 		return 0
