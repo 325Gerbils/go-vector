@@ -60,3 +60,13 @@ func main() {
 ## Documentation
 
 Todo. 
+
+## Planned features
+
+Return a zero vector Vector{0,0,0}
+```go
+vector.Zero()
+```
+
+
+
