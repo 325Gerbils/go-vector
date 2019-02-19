@@ -27,11 +27,13 @@ fmt.Println(v2.Mag())    // Prints v2's magnitude
 
 ## Intro to Vectors
 
-This is a basic diagram of a vector and some important measurements.
+This is a basic diagram of a vector. In two dimensions, it has both a direction and a magnitude (θ, r), or an X and Y (x, y). Math can be done on them, such as adding two vectors, or calculating the angle between them, or changing the magnitude. 
 
 ![Diagram of a Vector](/vector.png)
 
-Todo.
+For a quick tutorial on vector math, [go read this](https://www.wyzant.com/resources/lessons/math/calculus/multivariable_vectors/introduction). Most of the basic functions have already been covered by this library, so you can jump right into adding vectors together or calculating the dot product.
+
+In this library, a Vector is represented by the X, Y, and Z (which is 0 for 2D vector math) values of a point. The heading and magnitude are calculated from those values. A vector could also be used to keep track of points since it simply defines a point and the associated functions and methods do all the necessary math to calculate the corresponding vector. The memory overhead for creating a Vector is low, since it is just a struct of 3 float64 types. 
 
 ## Examples
 
