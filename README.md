@@ -59,6 +59,64 @@ func main() {
 
 ## Documentation
 
+Most documentation is built in to the code. Here is a list of the types and functions:
+
+```go
+type Vector struct
+
+func New(a, b interface{}) Vector
+
+func New3D(a, b, c interface{}) Vector
+
+func Random2D() Vector
+
+func Random3D() Vector
+
+func FromAngle(angle interface{}) Vector
+
+func (v *Vector) Add(v1 Vector)
+
+func (v *Vector) Sub(v1 Vector)
+
+func (v *Vector) Mult(s interface{})
+
+func (v *Vector) Div(s interface{}) 
+
+func Add(v1, v2 Vector) Vector
+
+func Sub(v1, v2 Vector) Vector
+
+func (v Vector) Mag() float64
+
+func (v Vector) MagSq() float64
+
+func (v Vector) Copy() Vector
+
+func (v Vector) Get() Vector
+
+func (v *Vector) Normalize()
+
+func (v Vector) Dist(v1 Vector) float64
+
+func (v Vector) DistSq(v1 Vector) float64
+
+func (v Vector) Dot(v1 Vector) float64
+
+func (v Vector) Cross(v1 Vector) Vector
+
+func (v *Vector) Limit(max interface{})
+
+func (v *Vector) SetMag(mag interface{}) 
+
+func (v Vector) Heading() float64
+
+func (v *Vector) Rotate(amt interface{})
+
+func Lerp(v1, v2 Vector, amt interface{}) Vector
+
+func AngleBetween(v1, v2 Vector) float64
+```
+
 Todo. 
 
 ## Planned features
@@ -68,5 +126,8 @@ Return a zero vector
 vector.Zero() // Returns Vector{0,0,0}
 ```
 
-
-
+Print vector values
+```go
+vector.Print()   // prints {x, y, z}
+vector.Print2D() // prints {x, y}
+```
