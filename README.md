@@ -16,12 +16,12 @@ type Vector struct {
 Basic usage looks something like this:
 
 ```go
-v1 := vector.New(4,5)
-v2 := vector.Random2D()
-v2.Mult(5)
-v1.Add(v2)
-fmt.Println(v1.X, v1.Y)
-fmt.Println(v2.Mag())
+v1 := vector.New(4,5)    // Creates new Vector{4,5,0}
+v2 := vector.Random2D()  // Creates new unit Vector with random orientation
+v2.Mult(5)               // Multiplies v2's magnitude by 5
+v1.Add(v2)               // Adds v2 to v1, modifying v1
+fmt.Println(v1.X, v1.Y)  // Prints v1's X and Y values
+fmt.Println(v2.Mag())    // Prints v2's magnitude
 ```
 
 
