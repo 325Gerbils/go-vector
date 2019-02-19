@@ -27,6 +27,10 @@ fmt.Println(v2.Mag())    // Prints v2's magnitude
 
 ## Intro to Vectors
 
+This is a basic diagram of a vector and some important measurements.
+
+![Diagram of a Vector](/vector.png)
+
 Todo.
 
 ## Examples
