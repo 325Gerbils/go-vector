@@ -63,9 +63,9 @@ Todo.
 
 ## Planned features
 
-Return a zero vector Vector{0,0,0}
+Return a zero vector
 ```go
-vector.Zero()
+vector.Zero() // Returns Vector{0,0,0}
 ```
 
 
