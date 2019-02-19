@@ -5,6 +5,14 @@ go-vector provides an easy to use library for creating and modifying vectors in 
 
 [Skip to Documentation](#Documentation)
 
+A Vector is a struct type with associated methods and functions that either operate on existing Vector structs, return new Vector structs, or calculate properties of Vector structs
+
+```go
+type Vector struct {
+	X, Y, Z float64
+}
+```
+
 
 ## Intro to Vectors
 
