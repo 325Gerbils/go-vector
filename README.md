@@ -61,7 +61,7 @@ func main() {
 
 Most documentation is built in to the code. Here is a list of the types and functions:
 
-```go
+```
 type Vector struct
 
 func New(a, b interface{}) Vector
