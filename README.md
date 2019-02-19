@@ -35,6 +35,14 @@ For a quick tutorial on vector math, [go read this](https://www.wyzant.com/resou
 
 In this library, a Vector is represented by the X, Y, and Z (which is 0 for 2D vector math) values of a point. The heading and magnitude are calculated from those values. A vector could also be used to keep track of points since it simply defines a point and the associated functions and methods do all the necessary math to calculate the corresponding vector. The memory overhead for creating a Vector is low, since it is just a struct of 3 float64 types. 
 
+From the diagram (assuming the vector is called "vec"):
+```go
+r := vec.Mag()
+theta := vec.Heading()
+x := vec.X
+y := vec.Y
+```
+
 ## Examples
 
 A simple physics simulator that adds up the forces (in this case, just gravity) on an object and calculates its location, velocity, and acceleration
