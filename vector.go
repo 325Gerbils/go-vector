@@ -64,39 +64,43 @@ func FromAngle(angle interface{}) Vector {
 // Add modifies a vector variable by adding the x, y, and z values
 // of the vector passed as an argument
 // Usage: v.Add(v1)
-func (v *Vector) Add(v1 Vector) {
+func (v *Vector) Add(v1 Vector) Vector {
 	v.X += v1.X
 	v.Y += v1.Y
 	v.Z += v1.Z
+	return *v
 }
 
 // Sub (subtract) modifies a vector variable by subtracting the x, y, and z values
 // of the vector passed as an argument
 // Usage: v.Sub(v1)
-func (v *Vector) Sub(v1 Vector) {
+func (v *Vector) Sub(v1 Vector) Vector {
 	v.X -= v1.X
 	v.Y -= v1.Y
 	v.Z -= v1.Z
+	return *v
 }
 
 // Mult (multiply) modifies a vector variable by multiplying the x, y, and z values
 // by a scalar amount passed as an argument
 // Usage: v.Mult(val)
-func (v *Vector) Mult(s interface{}) {
+func (v *Vector) Mult(s interface{}) Vector {
 	m := getFloat64(s)
 	v.X *= m
 	v.Y *= m
 	v.Z *= m
+	return *v
 }
 
 // Div (divide) modifies a vector variable by dividing the x, y, and z values
 // by a scalar amount passed as an argument
 // Usage: v.Div(val)
-func (v *Vector) Div(s interface{}) {
+func (v *Vector) Div(s interface{}) Vector {
 	m := getFloat64(s)
 	v.X /= m
 	v.Y /= m
 	v.Z /= m
+	return *v
 }
 
 // Add returns a vector equivalent to v1.Copy().Add(v2)
@@ -144,8 +148,9 @@ func (v Vector) Get() Vector {
 // Normalize sets the length (magnitude) of a vector to 1
 // By dividing the vector by its magnitude
 // Usage: v.Normalize()
-func (v *Vector) Normalize() {
+func (v *Vector) Normalize() Vector {
 	v.Div(v.Mag())
+	return *v
 }
 
 // Dist (distance) returns a scalar distance from one vector to another
@@ -185,20 +190,22 @@ func (v Vector) Cross(v1 Vector) Vector {
 // Limit limits the magnitude of a vector to the argument value
 // If the magnitude of the vector is over the limit, set it to the limit
 // Usage: v.Limit(val)
-func (v *Vector) Limit(max interface{}) {
+func (v *Vector) Limit(max interface{}) Vector {
 	m := getFloat64(max)
 	if v.MagSq() > m*m {
 		v.Normalize()
 		v.Mult(m)
 	}
+	return *v
 }
 
 // SetMag sets the magnitude of a vector to the argument value
 // Usage: v.SetMag(val)
-func (v *Vector) SetMag(mag interface{}) {
+func (v *Vector) SetMag(mag interface{}) Vector {
 	m := getFloat64(mag)
 	v.Normalize()
 	v.Mult(m)
+	return *v
 }
 
 // Heading returns the angle of a vector in 2D space
@@ -210,11 +217,12 @@ func (v Vector) Heading() float64 {
 
 // Rotate rotates a vector by a given angle
 // Usage: v.Rotate(amt)
-func (v *Vector) Rotate(amt interface{}) {
+func (v *Vector) Rotate(amt interface{}) Vector {
 	t := v.X
 	a := getFloat64(amt)
 	v.X = v.X*math.Cos(a) - v.Y*math.Sin(a)
 	v.Y = t*math.Sin(a) - v.X*math.Cos(a)
+	return *v
 }
 
 // Lerp returns a vector that is the interpolation between two vectors
